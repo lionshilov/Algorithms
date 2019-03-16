@@ -7,17 +7,17 @@ struct node {
 	struct node *prev;
 } node;
 
-struct listx2{		
+struct list2{		
 	struct node* first;
 	struct node* last;	
-} listx2;
+} list2;
 
-int isEmpty(struct listx2* spisok)
+int isEmpty(struct list2* spisok)
 {
 	return spisok->first==NULL && spisok->last==NULL;
 }
 
-struct node* find(struct listx2* spisok,int k)
+struct node* find(struct list2* spisok,int k)
 {
 	struct node *tmp=spisok->first;
 	while(tmp->value!=k){
@@ -30,7 +30,7 @@ struct node* find(struct listx2* spisok,int k)
 	return tmp;
 }
 
-struct node* find_invers(struct listx2* spisok,int k)
+struct node* find_invers(struct list2* spisok,int k)
 {
 	struct node *tmp=spisok->last;
 	while(tmp->value!=k){
@@ -43,7 +43,7 @@ struct node* find_invers(struct listx2* spisok,int k)
 	return tmp;
 }
 
-void init(struct listx2* spisok,int value)
+void init(struct list2* spisok,int value)
 {
 	struct node* tmp;
 	tmp = (struct node*)malloc(sizeof(struct node));
@@ -54,7 +54,7 @@ void init(struct listx2* spisok,int value)
 	spisok->last = tmp;
 }
 
-int push_back(struct listx2* spisok, int x)
+int push_back(struct list2* spisok, int x)
 {
 	if(isEmpty(spisok)==1)
 		init (spisok,x);
@@ -70,7 +70,7 @@ int push_back(struct listx2* spisok, int x)
 	return 0;
 }
 
-int push_front(struct listx2* spisok,int x) 
+int push_front(struct list2* spisok,int x) 
 {
 	if(isEmpty(spisok)==1)
 		init (spisok,x);
@@ -86,7 +86,7 @@ int push_front(struct listx2* spisok,int x)
 	return 0;
 }
 
-int clear(struct listx2* spisok)
+int clear(struct list2* spisok)
 {
 	if(isEmpty(spisok)==1)
 	{
@@ -103,7 +103,7 @@ int clear(struct listx2* spisok)
 	}
 }
 
-void _remove(struct listx2* spisok, struct node *tmp){
+void _remove(struct list2* spisok, struct node *tmp){
 	if(tmp!=NULL){
 		if (tmp==spisok->first && tmp==spisok->last) {
 			clear(spisok);
@@ -128,7 +128,7 @@ void _remove(struct listx2* spisok, struct node *tmp){
 	}
 }
 
-int removeLast(struct listx2* spisok,int x)
+int removeLast(struct list2* spisok,int x)
 {
 	struct node* element = find_invers(spisok,x);
 	if (element!=NULL){
@@ -138,7 +138,7 @@ int removeLast(struct listx2* spisok,int x)
 	return -1;
 }
 
-int removeFirst(struct listx2* spisok, int x)
+int removeFirst(struct list2* spisok, int x)
 {
 	struct node* element = find(spisok,x);
 	if (element!=NULL){
@@ -148,7 +148,7 @@ int removeFirst(struct listx2* spisok, int x)
 	return -1;
 }
 
-int insertAfter	(struct listx2* spisok,int num, int data)
+int insertAfter	(struct list2* spisok,int num, int data)
 {
 	struct node* tmp = spisok->first;
 	for (int i = 1;i<num;i++)
@@ -166,7 +166,7 @@ int insertAfter	(struct listx2* spisok,int num, int data)
 	return 0;   
 }
 
-int insertBefore(struct listx2* spisok,int num, int data)
+int insertBefore(struct list2* spisok,int num, int data)
 {
 	struct node* tmp = spisok->first;
 	for (int i = 1;i<num;i++)
@@ -184,7 +184,7 @@ int insertBefore(struct listx2* spisok,int num, int data)
 	return 0; 
 }
 
-void print(struct listx2* spisok)
+void print(struct list2* spisok)
 {
 	struct node* tmp=spisok->first;
 	while(tmp->next!=NULL)
@@ -195,7 +195,7 @@ void print(struct listx2* spisok)
 	printf("%d\n", tmp->value);
 }
 
-void print_invers(struct listx2* spisok)
+void print_invers(struct list2* spisok)
 {
 	struct node* tmp=spisok->last;
 	while(tmp->prev!=NULL)
@@ -211,7 +211,7 @@ void print_invers(struct listx2* spisok)
 int main()
 {
 	int n,a;
-	struct listx2* struc=(struct listx2*)malloc(sizeof(struct listx2));	
+	struct list2* struc=(struct list2*)malloc(sizeof(struct list2));	
 	scanf("%d",&n);
 	for (int i=0;i<n;i++)
 	{
