@@ -44,6 +44,7 @@ int find(tree* t, int value, node* node1)
   }
   return 1;
 }
+
 int insert(tree* t, int value)
 {
   struct node * node1, ** nodenode, * nodenodenode = NULL;
@@ -284,24 +285,23 @@ int main(){
   }
   int hate2;
   scanf("%d", &hate2);
-  struct node * node2;
-  node2 = malloc(sizeof * node2);
+  node1 = malloc(sizeof * node1);
   int error = find(t, hate2, node1);
   if (error == 1){
     printf("-\n");
   } else {
-    if (node2->parent != NULL){
-      printf("%d ", node2->parent->DATA);
+    if (node1->parent != NULL){
+      printf("%d ", node1->parent->DATA);
     } else {
       printf("_ ");
     }
-    if (node2->left != NULL){
-      printf("%d ", node2->left->DATA);
+    if (node1->left != NULL){
+      printf("%d ", node1->left->DATA);
     } else {
       printf("_ ");
     }
-    if (node2->right != NULL){
-      printf("%d\n", node2->right->DATA);
+    if (node1->right != NULL){
+      printf("%d\n", node1->right->DATA);
     } else {
       printf("_\n");
     }
