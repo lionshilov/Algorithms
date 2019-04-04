@@ -1,31 +1,36 @@
 #include <stdio.h>
-#include <stdlib.h> // сортировка расческой
+#include <stdlib.h> // fast sorting_function
 
-void sorting_function(int n, int arr[]){
-        int step = n-1, tmp;
-        while(step>=1){
-                for(int i=0;i<n-step;i++){
-                        if(arr[i]>arr[i+step]){
-                                tmp=arr[i];
-                                arr[i]=arr[i+step];
-                                arr[i+step]=tmp;
-                        }
-                }
-                step--;
+void sorting_function(int arr[],int left,int right){
+        int i=left,j=right,d,m = arr[(left+right)/2];
+        while(i<=j){
+            for(;arr[i]<m;i++);
+            for(;arr[j]>m;j--);
+            if(i<=j){
+                d=arr[i];
+                arr[i++]=arr[j];
+                arr[j--]=d;
+            }
         }
+        if(left<j) sorting_function(arr,left,j);
+        if(i<right) sorting_function(arr,i,right);
 }
 
-int main(){
+int main()
+{
         int n;
         scanf("%d",&n);
         int arr[n];
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n;i++)
+            {
                 scanf("%d",&arr[i]);
-        }
-        sorting_function(n,arr);
-        for(int i=0;i<n;i++){
-                printf("%d ", arr[i]);
-        }
+            }
+        sorting_function(arr,0,n);
+
+        for(int i=0;i<n;i++)
+            {
+                printf("%d ",arr[i]);
+            }
         printf("\n");
         return 0;
 }
