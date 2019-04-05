@@ -95,7 +95,7 @@ if (first > 0){
 printf(" ");
 }
 if (n == NULL){
-printf("_");
+printf(" ");
 } else{
 printf("%d", n->data);
 }
@@ -130,50 +130,6 @@ printf(" ");
 flag_tree++;
 }
 printNode(n, 1, i, 0);
-}
-}
-void print_obhod2(struct tree * t)
-{
-node * a[15];
-int ab = 0;
-node * write[15];
-int wb = 0;
-node * n = t->root;
-while (wb < t->count){
-while (n != NULL){
-wb++;
-if (n->right != NULL){
-ab++;
-a[ab] = n->right;
-}
-write[wb] = n;
-n = n->left;
-}
-n = a[ab];
-ab -= 1;
-}
-int flag_tree = 0;
-for (int i = 1; i <= wb; i++){
-if (flag_tree > 0){
-printf(" ");
-} else {
-flag_tree++;
-}
-printf("%d", write[i]->data);
-}
-printf("\n");
-}
-void print_obhod3(struct node * n, int flag_tree)
-{
-if (n->left != NULL){
-print_obhod3(n->left, flag_tree + 1);
-}
-if (n->right != NULL){
-print_obhod3(n->right, flag_tree + 1);
-}
-printf("%d", n->data);
-if (flag_tree > 0){
-printf(" ");
 }
 }
 int main(){
